@@ -1,0 +1,8 @@
+.loading {
+  min-height: 100vh;
+  min-width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(125, 125, 124, 0.438);
+}

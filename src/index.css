@@ -45,7 +45,7 @@ body {
     Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   font-family: "poppins";
   color: var(--mainBlack);
-  background: var(--mainBackground);
+  /* background: var(--mainBackground); */
   line-height: 1.4;
   font-size: 1rem;
   font-weight: 300;

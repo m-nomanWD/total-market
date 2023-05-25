@@ -1,4 +1,7 @@
 import { useEffect, useState } from "react";
+import { useGlobalContext } from "./context";
+import { mainData } from "./data";
+
 function useFetch(url) {
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setIsError] = useState(false);
@@ -6,19 +9,17 @@ function useFetch(url) {
 
   const list = async () => {
     try {
-      setIsLoading(true);
       const response = await fetch(url);
       const result = await response.json();
 
       if (result) {
+        console.log(data);
         setData(result);
-      } else {
-        setData([]);
+        setIsLoading(false);
       }
-      setIsLoading(false);
-      setIsError(false);
-    } catch {
-      setIsError(true);
+    } catch (error) {
+      console.log(data);
+      setData(mainData);
       setIsLoading(false);
     }
   };

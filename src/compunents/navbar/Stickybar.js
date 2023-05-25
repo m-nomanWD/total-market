@@ -9,13 +9,7 @@ import "./navbar.css";
 function Stickybar() {
   const [isShowList, setIsShowList] = useState(true);
   const container = useRef(null);
-  const { data } = useGlobalContext();
-  const categories = data.reduce((cur, item) => {
-    if (!cur.includes(item.category)) {
-      cur.push(item.category);
-    }
-    return cur;
-  }, []);
+  const { categories } = useGlobalContext();
 
   return (
     <article className="sticky-bar">

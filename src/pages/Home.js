@@ -1,7 +1,8 @@
 import React from "react";
+import HomeCompunent from "../compunents/home/Home";
 
 function Home() {
-  return <div>Home</div>;
+  return <HomeCompunent />;
 }
 
 export default Home;

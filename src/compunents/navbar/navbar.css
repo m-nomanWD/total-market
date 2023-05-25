@@ -159,6 +159,7 @@ input:focus {
   width: 300px;
   background-color: var(--mainBackground);
   height: 54px;
+
   padding: 0.5rem;
   position: relative;
   cursor: pointer;
@@ -199,6 +200,7 @@ input:focus {
 .category-list {
   position: absolute;
   height: 0;
+  z-index: 3;
   overflow: hidden;
   background-color: #fff;
   width: 300px;

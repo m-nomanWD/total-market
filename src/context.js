@@ -22,6 +22,9 @@ const AppProvider = ({ children }) => {
     alertState: false,
     alertMsg: "",
     alertClass: "",
+    showModalProduct: false,
+    quickShowProduct: {},
+    isAlertShow: false,
   };
 
   const [state, dispatch] = useReducer(reduce, defaultState);

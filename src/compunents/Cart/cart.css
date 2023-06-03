@@ -1,0 +1,117 @@
+.cart-header {
+  background: url("../../../public/images/headers/header1.jpg");
+  width: 100vw;
+  justify-content: center;
+  align-items: center;
+  min-height: 200px;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+.cart-header h1 {
+  font-weight: 300;
+}
+.cart-header p {
+  color: #6a7efc;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-weight: 500;
+  font-size: 18px;
+  margin-top: 1rem;
+  cursor: pointer;
+}
+.cart-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 1160px;
+  margin-top: 2rem;
+}
+.cart-table-head {
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid rgba(194, 190, 190, 0.411);
+  padding: 0.75rem;
+  color: #999cb8;
+}
+.cart-table-head li {
+  list-style: none;
+  text-transform: capitalize;
+  text-align: center;
+}
+.price,
+.cart-table-head li:nth-child(2) {
+  width: 120px;
+  text-align: center;
+}
+.quantity,
+.cart-table-head li:nth-child(3) {
+  width: 120px;
+}
+.total,
+.cart-table-head li:nth-child(4) {
+  width: 100px;
+  text-align: center;
+}
+.remove-item {
+  color: rgba(144, 143, 137, 0.467);
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+.product-container,
+.product-cell {
+  width: 400px;
+  display: flex;
+  align-items: center;
+}
+.cart-item {
+  display: flex;
+  align-items: center;
+  margin: 1rem;
+  border-bottom: 1px solid rgba(194, 190, 190, 0.411);
+}
+.cart-item .cart-img {
+  width: 90px;
+  margin-right: 1rem;
+}
+.empty-cart-container {
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-top: 8rem;
+}
+.empty-cart-container > .shopping-icon > .icon {
+  font-size: 8rem;
+  color: #5c5c61;
+}
+.empty-cart-container > p {
+  font-size: 18px;
+  text-transform: capitalize;
+  letter-spacing: 2px;
+  margin-top: 1rem;
+  color: rgb(125, 125, 125);
+}
+.empty-cart-container button {
+  border-radius: 0;
+}
+@media screen and (max-width: 850px) {
+  .cart-section {
+    flex-direction: column;
+  }
+  .cart-table-head {
+    display: none;
+  }
+}
+@media screen and (max-width: 720px) {
+  .cart-item {
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid;
+  }
+}

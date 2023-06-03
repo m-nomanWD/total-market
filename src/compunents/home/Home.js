@@ -4,6 +4,7 @@ import Categories from "./home-compunets/Categories";
 import "./home.css";
 import SmartDeals from "./home-compunets/SmartDeals";
 import ProductTab from "./home-compunets/ProductTab";
+import ModalProduct from "../modals/ModalProduct";
 import { useGlobalContext } from "../../context";
 
 function Home() {
@@ -15,6 +16,7 @@ function Home() {
           <p>{state.alertMsg}</p>
         </article>
       )}
+      <ModalProduct />
       <Slider />
       <Categories />
       <SmartDeals />

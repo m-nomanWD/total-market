@@ -2,7 +2,7 @@ import React from "react";
 import { CiShuffle, CiShoppingCart, CiHeart, CiSearch } from "react-icons/ci";
 import { RxHamburgerMenu } from "react-icons/rx";
 import { useGlobalContext } from "../../context";
-
+import { Link } from "react-router-dom";
 import logo from "../../2.png";
 function Middlebar() {
   const { state } = useGlobalContext();
@@ -26,14 +26,20 @@ function Middlebar() {
           <li>
             <CiShuffle />
           </li>
-          <li className="wish-list">
-            <span className="counter-badge">{state.wishlistCounter}</span>
-            <CiHeart />
-          </li>
-          <li className="cart">
-            <span className="counter-badge">{state.cartCounter}</span>
-            <CiShoppingCart />
-          </li>
+          <Link to="../../../pages/Wishlist">
+            {" "}
+            <li className="wish-list">
+              <span className="counter-badge">{state.wishlistCounter}</span>
+              <CiHeart />
+            </li>
+          </Link>
+          <Link to="../../../pages/Cart">
+            {" "}
+            <li className="cart">
+              <span className="counter-badge">{state.cartCounter}</span>
+              <CiShoppingCart />
+            </li>
+          </Link>
         </ul>
       </div>
     </article>

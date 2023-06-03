@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useGlobalContext } from "../../../context";
 import { Link } from "react-router-dom";
 import "./app.css";
@@ -12,6 +12,11 @@ import { Gi3DGlasses, GiCompanionCube } from "react-icons/gi";
 function ProductTab() {
   const { categories, dispatch, data, state, setIsAlertShow } =
     useGlobalContext();
+  const left = useRef(null);
+  const right = useRef(null);
+  const card = useRef(null);
+  const [counter, setCounter] = useState(0);
+  console.log(state.cart);
   const handleWishlist = (id) => {
     dispatch({ type: "ADD_TO_WISHLIST", payload: id });
     setIsAlertShow(true);
@@ -27,6 +32,14 @@ function ProductTab() {
   const handleFilterList = (item) => {
     dispatch({ type: "FILTER_LIST", payload: item });
   };
+  const handleProductSlide = () => {
+    const cards = document.querySelectorAll(".card");
+    if (cards.length <= 5) {
+      right.current.style.display = "none";
+    } else {
+      right.current.style.display = "block";
+    }
+  };
   React.useEffect(() => {
     const timer = setInterval(() => {
       setIsAlertShow(false);
@@ -41,7 +54,15 @@ function ProductTab() {
         <ul className="tab-links">
           {categories.map((item, index) => {
             return (
-              <li key={index} onClick={() => handleFilterList(item)}>
+              <li
+                key={index}
+                onClick={() => {
+                  setCounter(0);
+
+                  // handleProductSlide();
+                  handleFilterList(item);
+                }}
+              >
                 {item}
               </li>
             );
@@ -49,13 +70,60 @@ function ProductTab() {
         </ul>
       </article>
       <div className="cards-center">
-        <HiChevronRight className="right" />
-        <HiChevronLeft className="left" />
+        {/* <span ref={right}>
+          <HiChevronRight
+            className="right"
+            onClick={() => {
+              setCounter((prev) => {
+                return prev + 1;
+              });
+
+              const cards = document.querySelectorAll(".card");
+              cards.forEach((card) => {
+                card.style.left = `-${counter * 240}px`;
+              });
+            }}
+          />
+        </span> */}
+        {/* <span ref={left}>
+          {counter !== 1 && (
+            <HiChevronLeft
+              className="left"
+              onClick={() => {
+                setCounter((prev) => {
+                  return prev - 1;
+                });
+                // console.log(counter);
+                const cards = document.querySelectorAll(".card");
+                cards.forEach((card) => {
+                  card.style.left = `-${counter * 240}px`;
+                });
+              }}
+            />
+          )}
+        </span> */}
+
         <article className="tab-cards">
-          {state.filterList.map((item) => {
-            const { id, name, category, colors, image, price, company } = item;
+          {state.filterList.map((item, index) => {
+            const {
+              id,
+              cartState,
+              name,
+              category,
+              colors,
+              image,
+              price,
+              company,
+            } = item;
             return (
-              <article key={id} className="card">
+              <article
+                style={{
+                  transform: `translateX(${index * 110}%)`,
+                }}
+                key={id}
+                className="card"
+                ref={card}
+              >
                 <div className="card-header">
                   <Link to={""} className="card-img">
                     <img src={image} alt="" />
@@ -65,15 +133,17 @@ function ProductTab() {
                     onClick={() => handleWishlist(id)}
                   />
                   <div className={"card-btn"}>
-                    <Gi3DGlasses
-                      className="card-icon"
-                      onClick={() => handleQuickLook(id)}
-                    />
+                    <span className="card-icon">
+                      <Gi3DGlasses onClick={() => handleQuickLook(id)} />
+                    </span>
                     <span className="line"></span>
-                    <HiOutlineShoppingCart
-                      className="card-icon"
-                      onClick={() => handleCart(id)}
-                    />
+                    <span className="card-icon">
+                      {!cartState ? (
+                        <HiOutlineShoppingCart onClick={() => handleCart(id)} />
+                      ) : (
+                        <span>in cart</span>
+                      )}
+                    </span>
                   </div>
                 </div>
                 <div className="card-info">
@@ -83,6 +153,7 @@ function ProductTab() {
                   </h4>
                   <p>
                     <span className="discount">
+                      <b>$ </b>
                       {Math.floor(price * (80 / 100))}
                     </span>
                     {price}
@@ -93,9 +164,7 @@ function ProductTab() {
                         backgroundColor: color,
                       };
                       return (
-                        <div key={color} style={style} className="color">
-                          {""}
-                        </div>
+                        <div key={color} style={style} className="color"></div>
                       );
                     })}
                   </div>
@@ -105,6 +174,7 @@ function ProductTab() {
           })}
         </article>
       </div>
+      <a href="#top"> hello</a>
     </section>
   );
 }

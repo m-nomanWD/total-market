@@ -7,7 +7,8 @@ import Registation from "./pages/Registation";
 import ShopList from "./pages/ShopList";
 import Error from "./pages/Error";
 import Loading from "./compunents/Loading/Loading";
-
+import Cart from "./pages/Cart";
+import Wishlist from "./pages/Wishlist";
 import { Routes, Route } from "react-router-dom";
 import { BrowserRouter } from "react-router-dom";
 import { useGlobalContext } from "./context";
@@ -27,6 +28,8 @@ function App() {
             <Route path="/pages/ShopList" Component={ShopList} />
 
             <Route path="/pages/Registation" Component={Registation} />
+            <Route path="/pages/Cart" Component={Cart} />
+            <Route path="/pages/Wishlist" Component={Wishlist} />
             <Route path="*" Component={Error} />
           </Routes>
         </BrowserRouter>
